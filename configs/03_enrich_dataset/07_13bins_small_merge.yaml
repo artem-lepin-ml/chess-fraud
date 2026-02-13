@@ -1,0 +1,20 @@
+meta:
+  dataset_id: "13bins_small"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+    processed_root: "../data/processed/${meta.dataset_id}"
+
+input_main_csv: "${meta.paths.interim_root}/02_annotated_player_moves.csv"
+output_csv: "${meta.paths.processed_root}/03_enriched_player_moves_new.csv"
+
+side_paths:
+  - "${meta.paths.interim_root}/03_moves_maia1.csv"
+  - "${meta.paths.interim_root}/03_moves_lc0.csv"
+  - "${meta.paths.interim_root}/03_moves_maia2.csv"
+  - "${meta.paths.interim_root}/03_moves_stockfish.csv"
+  - "${meta.paths.interim_root}/03_moves_allie.csv"
+
+# Optional: validate row-wise equality of these keys for each side table.
+keys:
+  game_id_col: "game_id"
+  half_move_col: "half_move"

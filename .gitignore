@@ -1,0 +1,99 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+Data / artifacts
+*.csv
+*.pgn
+*.zst
+*.bz2
+*.parquet
+*.duckdb
+*./np
+*./npz
+
+# local repair backups
+.repair_backup_*
+
+# Keep example artifacts
+!**/example/
+!**/example/**
+
+# C extensions
+*.so
+
+# =========================
+# Virtual environments
+# =========================
+.venv/
+venv/
+ENV/
+env/
+.virtualenv/
+
+# =========================
+# Packaging / build
+# =========================
+build/
+dist/
+.eggs/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# =========================
+# Unit tests / coverage
+# =========================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+hypothesis/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Logs / runtime
+# =========================
+*.log
+*.pid
+
+# =========================
+# IDEs / editors
+# =========================
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Env / secrets
+# =========================
+.env
+.env.*
+
+# =========================
+# mypy / pyright
+# =========================
+.mypy_cache/
+.pyright/
+
+# =========================
+# Ruff / pylint
+# =========================
+.ruff_cache/
+.pylint.d/

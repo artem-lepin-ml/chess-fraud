@@ -1,0 +1,104 @@
+meta:
+  dataset_id: "example"
+  paths:
+    raw_root: "../data/raw/"
+    interim_root: "../data/interim/${meta.dataset_id}"
+
+duckdb:
+  db_path: "${meta.paths.interim_root}/02/duckdb/02_2025-03_first_100k_lines.duckdb"
+  threads: 32
+  temp_directory: "/tmp/duckdb"
+
+input:
+  # Move-level CSV export .csv/.csv.zst. Expected to contain one row per half-move (ply).
+  moves_csv_path: "${meta.paths.raw_root}/example/01_2025-03_rated_first_100k_lines_new.csv.zst"
+
+  # Set to null to disable.
+  # Example: "2025-01" keeps only rows whose Date starts with "2025-01".
+  filter_month_prefix: "2025-03"
+
+  # Optional exact TimeControl filter.
+  # Keep empty string to disable.
+  filter_time_control: ""
+
+# Mapping from "logical" field names used by the pipeline to actual column names in the raw CSV.
+columns:
+  game_id: "GameId"
+  date: "Date"
+  white: "White"
+  black: "Black"
+  white_elo: "WhiteElo"
+  black_elo: "BlackElo"
+  time_control: "TimeControl"
+  termination: "Termination"
+  result: "GameResult"
+  halfmove: "HalfMove"               # 1, 2, ..., N (ply index)
+  move: "Move"                       # SAN move string
+  clock: "Clock"                     # remaining time AFTER the move, in seconds (for the mover)
+
+# Pay attention!
+cache:
+  # Game-level cache (Parquet).
+  games_meta_parquet: "${meta.paths.interim_root}/02/cache/02_games_meta.parquet"
+  # If true, recompute the cache even if the file exists.
+  rebuild_games_meta: true
+
+# Rating bins used for stratification and optional same-bin enforcement per game.
+rating_bins:
+  lo: 1100
+  hi: 2200
+  step: 100
+
+filters:
+  clock_threshold_seconds: 0
+  # Minimum number of plies where BOTH players stayed above the clock threshold.
+  min_plies_while_both_gt_threshold: 60
+
+sampling:
+  # require at least this many games in the month before a player is considered at all.
+  min_games_per_player_month: 1
+
+  # Deterministic preselection per rating bin.
+  # The pipeline first bins players by avg_elo, then keeps only the first N players per bin.
+  preselect_players_per_bin: 10
+
+  # Final number of players per rating bin in the dataset.
+  final_players_per_bin: 5
+
+  # Number of games sampled per (rating_bin, player) in the final dataset.
+  games_per_player: 1
+
+  # If true, keep only games where the player's per-game rating bin equals their avg rating bin.
+  enforce_same_bin_for_game_elo: true
+
+  # Cross-split leakage control:
+  # If true, the dataset keeps only games where the selected player's opponent is NOT selected.
+  # This prevents the same game_id from appearing twice (once from each player's perspective),
+  # which can otherwise create train/test leakage when one perspective lands in train and the other in test.
+  drop_games_vs_selected_opponents: true
+
+  # Only used when drop_games_vs_selected_opponents=true.
+  # Increase this if you observe that some bins cannot fill final_players_per_bin after the opponent filter.
+  candidate_players_multiplier: 2
+
+splits:
+  # Player-based split: assigns each selected player to train/test (within each rating bin).
+  by_player:
+    test_player_fraction: 0.2
+
+  # Game-based split: assigns each game_id to train/test (within each player).
+  by_games:
+    test_game_fraction: 0.2
+
+output:
+  # Player-game index table, one row per sampled (player, game).
+  player_games_csv: "${meta.paths.interim_root}/02/02_player_games.csv"
+
+  # Selected players with metadata, one row per player.
+  players_csv: "${meta.paths.interim_root}/02/02_players.csv"
+
+  # Unique games with metadata, one row per game.
+  games_csv: "${meta.paths.interim_root}/02/02_games.csv"
+
+  # Move-level rows with metadata, one row per half-move.
+  moves_csv: "${meta.paths.interim_root}/02/02_moves.csv"

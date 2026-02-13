@@ -1,0 +1,18 @@
+meta:
+  dataset_id: "13bins_small"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+
+input_csv: "${meta.paths.interim_root}/02_annotated_player_moves.csv"
+output_csv: "${meta.paths.interim_root}/03_moves_lc0.csv"
+
+fen_col: "fen_before"
+
+lc0_path: "../data/external/engines/lc0_v32"
+backend_args: ["--backend=cuda-fp16"]
+threads: 1
+
+weights_path: "../data/external/lc0_weights/t1-256x10-distilled-swa-2432500.pb"
+
+limit:
+  nodes_list: [1, 10, 100]

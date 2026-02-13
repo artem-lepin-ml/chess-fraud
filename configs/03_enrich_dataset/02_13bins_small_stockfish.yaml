@@ -1,0 +1,18 @@
+meta:
+  dataset_id: "13bins_small"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+
+input_csv: "${meta.paths.interim_root}/02_annotated_player_moves.csv"
+output_csv: "${meta.paths.interim_root}/03_moves_stockfish.csv"
+
+columns:
+  fen_col: "fen_before"
+
+stockfish:
+  engine_path: "../data/external/engines/stockfish-ubuntu-x86-64-avx2"
+  depths: [1, 5, 9, 11, 15]
+  time_limit: 100
+  multipv: 1
+  num_engines: 48
+  mate_eval: 10000

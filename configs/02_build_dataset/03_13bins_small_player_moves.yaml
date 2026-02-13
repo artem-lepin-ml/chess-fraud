@@ -1,0 +1,44 @@
+meta:
+  dataset_id: "13bins_small"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+
+player_moves:
+  input:
+    player_games_csv: "${meta.paths.interim_root}/02/02_player_games.csv"
+    moves_csv: "${meta.paths.interim_root}/02/02_annotated_moves.csv"
+
+  output:
+    player_moves_csv: "${meta.paths.interim_root}/02_annotated_player_moves.csv"
+
+  filters:
+    drop_first_halfmoves: 20         # keep from 21
+    max_halfmove: 150                # keep <= 150
+    min_segment_len_halfmoves: 40    # sanity check
+
+  io:
+    chunksize: null               # count rows, set null to read the whole file
+
+  # names of input columns of player_games.csv, moves.csv
+  columns:
+    player_games:
+      game_id: "game_id"
+      player: "player"
+      player_color: "player_color"
+      rating_bin: "rating_bin"
+      split_by_player: "split_by_player"
+      split_by_games: "split_by_games"
+      plies_both_gt_thr: "plies_both_gt_thr"
+      player_elo: "player_elo"
+      opponent_elo: "opponent_elo"
+      time_control: "time_control"
+
+    moves:
+      game_id: "game_id"
+      half_move: "half_move"
+      move: "move"
+      move_uci: "move_uci"
+      fen_before: "fen_before"
+      fen_after: "fen_after"
+      clock: "clock"
+      clock_delta: "clock_delta"

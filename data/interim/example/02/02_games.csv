@@ -1,0 +1,62 @@
+split_by_player,split_by_games,game_id,date,white,black,white_elo,black_elo,time_control,termination,result,n_plies,plies_both_gt_thr
+test,test,7rk3Eakc,2025-03-01,javiperalta,Alvar5374,2011,2120,300+0,Normal,0-1,104,104
+test,test,EqNMrDjD,2025-03-01,amonra77,Renardowski,1880,1857,300+0,Normal,1-0,117,117
+test,test,ez98AJsf,2025-03-01,Fmahlow,violoncessist,1505,1536,180+0,Normal,1-0,89,89
+test,test,m9ZA3IAM,2025-03-01,matthiasbj21,gammy6666,1970,1952,180+2,Normal,1-0,111,111
+test,train,5urCUfy6,2025-03-01,SokolDP,Popusik,1035,1173,300+3,Normal,1-0,69,69
+test,train,DXzydgTM,2025-03-01,moheto1203,ebudikka,1394,1359,180+0,Normal,1-0,107,107
+test,train,DnYjbP6B,2025-03-01,MirsadiqNabiyev,yoilanT2377,2142,2070,180+0,Normal,0-1,62,62
+test,train,JkCXzKTT,2025-03-01,oranggila9203,chrispete,1627,1643,180+0,Time forfeit,1-0,109,107
+test,train,LPQ31yF1,2025-03-01,angolaalt,fisicachess,1210,1696,180+0,Time forfeit,0-1,74,74
+test,train,ODvcdGLk,2025-03-01,Myckey707809,MarioBros_CAR,766,1266,240+2,Normal,1-0,127,127
+test,train,Pbldxsmx,2025-03-01,Mikorra,NoobSlasher1,2327,2278,180+0,Normal,0-1,92,92
+test,train,TIwNSfR3,2025-03-01,AbbyNavarro1SMI,nahuelLincheo_2jav,998,1462,300+3,Normal,0-1,74,74
+test,train,lQnOJGdW,2025-03-01,bitcoinchess123,Gt31978,1685,1706,300+0,Normal,1/2-1/2,136,136
+train,test,I0D6s6wd,2025-03-01,lestad1,diabloazul2006,2296,2360,180+0,Normal,0-1,88,88
+train,test,PiUHxD1t,2025-03-01,Pablittokm14,Dracon8,1576,1544,180+0,Normal,1-0,91,91
+train,test,a4pdaGRW,2025-03-01,can68,erksun,1315,1375,300+3,Normal,0-1,174,174
+train,test,sLTAq71s,2025-03-01,Revad123,fuatbaycar1969,2024,2091,300+0,Normal,1-0,87,87
+train,test,wdQ3fSBA,2025-03-01,Alik96,zoli_chess,1197,1149,180+2,Normal,1/2-1/2,98,98
+train,train,03HdvBe4,2025-03-01,LucyferSam,olttt,1395,1489,300+0,Normal,1-0,81,81
+train,train,15oZEWxZ,2025-03-01,badapp,lard2901,1914,1933,180+0,Time forfeit,0-1,72,72
+train,train,1tGQ13GW,2025-03-01,anil1212,Vevenski,1299,1303,300+0,Normal,1-0,111,111
+train,train,2MYAzibU,2025-03-01,Kasparovakis,madnickit,1688,1696,300+3,Normal,1-0,65,65
+train,train,2QbLYu95,2025-03-01,itakeapillinibiza,azeiss,1473,1470,180+2,Normal,0-1,80,80
+train,train,2YuqKi3e,2025-03-01,Mylos-Sagar,Jix23,2170,2187,180+0,Normal,0-1,74,74
+train,train,3JINPAf5,2025-03-01,mouv,Jemude54,2024,1928,180+0,Normal,1-0,91,91
+train,train,49iwsgDp,2025-03-01,freddy2024,Kaelel,1538,1521,180+0,Normal,1-0,85,85
+train,train,4DKiGVBb,2025-03-01,mza330,trcnchess28909,1648,1678,180+0,Normal,1-0,73,73
+train,train,4PoGctSa,2025-03-01,lluisuc,DSKTaktikFuchs,1987,2529,180+0,Time forfeit,0-1,88,88
+train,train,4qj3QobI,2025-03-01,I_Ducasse,Dimmann,2296,2257,180+0,Normal,1-0,81,81
+train,train,5prmTwba,2025-03-01,grumpy58,Tober_KBPL,1808,2056,300+0,Normal,0-1,62,62
+train,train,7nDVXwIS,2025-03-01,gslivko200315,lTheHoundl,1197,1214,180+2,Normal,1-0,125,125
+train,train,9xzb3mqy,2025-03-01,Adro81,gerardog312,1906,2004,180+0,Normal,1-0,67,67
+train,train,Ag18jYNl,2025-03-01,Vl-1,LLE3APb,1802,2168,180+0,Normal,0-1,116,116
+train,train,Jw2rFRna,2025-03-01,nrobin,SUDAKA57,1929,1928,300+0,Normal,1-0,69,69
+train,train,KuCqIhFm,2025-03-01,afpl,WESSELin2016,1432,1393,300+0,Normal,1-0,125,125
+train,train,OuUFw11f,2025-03-01,jesuscal,RU_722,1699,1671,180+0,Normal,1-0,85,85
+train,train,Pjyd8x7S,2025-03-01,yavar12345,TheTimTwo,1454,1471,300+0,Time forfeit,1-0,63,63
+train,train,QuYjg6Lb,2025-03-01,jeremyjgay1,walterMartin,978,905,180+0,Time forfeit,1-0,71,71
+train,train,UWaG4JMn,2025-03-01,pdnfi8h4ueud,Leopoldo1973,1500,1447,180+2,Normal,0-1,66,66
+train,train,Uf1Bvmi0,2025-03-01,AsperoWells,val1313,1944,1848,180+2,Normal,1-0,63,63
+train,train,W6vDflvh,2025-03-01,DutchMartin,GuerraAperta,1881,1864,180+0,Time forfeit,0-1,78,78
+train,train,WiQicB1x,2025-03-01,GalileuszfromGalicja,JeromeGambitLOL,1196,1210,180+0,Normal,1-0,79,79
+train,train,YI6Q9haj,2025-03-01,Abdoadel_99,Boxer45,1165,1101,300+0,Normal,0-1,74,74
+train,train,YwvQLhT4,2025-03-01,saeed11111,KamKichubaev,2217,2379,180+2,Normal,0-1,82,82
+train,train,dov9AVhQ,2025-03-01,owenowen1000,Abdelrhmannazer,1604,1627,180+0,Time forfeit,0-1,110,110
+train,train,e1SWLOFW,2025-03-01,DonAdo,EDEY,2261,2332,180+0,Normal,1-0,71,71
+train,train,eXrRw73a,2025-03-01,TarekAzizieh,Gripov,1722,1736,180+0,Time forfeit,1-0,89,87
+train,train,fXaRnRHL,2025-03-01,GioAlbarracin,MiloNouveau,1800,1813,180+2,Normal,0-1,62,62
+train,train,g9gvUoW2,2025-03-01,Octavio5218_m,Chin0499,1798,1814,180+0,Normal,1-0,99,99
+train,train,iZm4n2Fn,2025-03-01,nafania2022,ugurgonen,2102,2029,300+0,Normal,1-0,99,99
+train,train,oATff9jr,2025-03-01,leono92,chesseveryman,1157,1084,180+2,Time forfeit,1-0,81,81
+train,train,oBT9ux3a,2025-03-01,aryjaks,Z4CKz,1256,1203,180+2,Normal,1-0,71,71
+train,train,oTegYX2H,2025-03-01,Ganzyk75,Andless_Feefle,1221,1207,180+0,Time forfeit,0-1,100,100
+train,train,p15hCIAL,2025-03-01,Sheket2,SetD,1733,1719,420+0,Normal,1/2-1/2,100,100
+train,train,pyiGkMCD,2025-03-01,Cletano,fackattack,1370,1378,300+0,Normal,0-1,66,66
+train,train,rnSuUEYn,2025-03-01,Zaliah,shaumie2000,1414,1451,180+0,Normal,1-0,69,69
+train,train,u4WN1Siy,2025-03-01,Skolari90,look2022,2088,2190,180+2,Normal,1/2-1/2,134,134
+train,train,uTKo4lhL,2025-03-01,adhamjon4012,Advensavic,2102,2109,180+2,Normal,0-1,74,74
+train,train,woFRTt1m,2025-03-01,nesdeger,Erviss,1730,1735,180+0,Time forfeit,0-1,92,92
+train,train,yjiI0uh0,2025-03-01,Alijnoud,Saergut,1852,1864,180+2,Normal,1/2-1/2,126,126
+train,train,zkEvduYS,2025-03-01,thenardog,BRAVEHEART1977,1199,1284,300+3,Normal,0-1,66,66

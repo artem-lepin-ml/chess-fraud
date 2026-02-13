@@ -1,0 +1,33 @@
+meta:
+  dataset_id: "example"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+    processed_root: "../data/processed/${meta.dataset_id}"
+
+input_csv: "${meta.paths.processed_root}/03_enriched_player_moves.csv"
+
+# Main artifact: one file with arrays keyed by fen_* column names.
+output_npz: "${meta.paths.processed_root}/04_embs_maia2_2050.npz"
+
+# float16 | float32
+embeddings_dtype: "float16"
+
+columns:
+  fen_before_col: "fen_before"
+
+  # Only these are turned into fen_* columns.
+  fen_prefix: "fen_"
+
+  elo_oppo_col: "opponent_elo"
+
+detector:
+  # Elo of the detector model used for embeddings (max strength).
+  elo_self: 2050
+
+maia2:
+  save_root: "../data/external/maia2/maia2_blitz.pt" # from repo root
+  type: "blitz"
+  device: "gpu"
+  batch_size: 1024
+  num_workers: 32
+  verbose: true

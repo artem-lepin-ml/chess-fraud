@@ -1,0 +1,39 @@
+meta:
+  dataset_id: "13bins_small"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+    processed_root: "../data/processed/${meta.dataset_id}"
+
+input_csv: "${meta.paths.processed_root}/03_enriched_player_moves_full.csv"
+
+# Main artifact: one NPZ with arrays keyed by move_* column names.
+output_npz: "${meta.paths.processed_root}/04_embs_allie_2500.npz"
+
+# float16 | float32
+embeddings_dtype: "float16"
+
+# Any column starting with this prefix will be embedded and saved as a key in NPZ.
+move_prefix: "move_"
+
+need_columns:
+  - game_id
+  - half_move
+  - player_color
+  - opponent_elo
+  - time_control
+  - move_uci
+  - move_thinking_time
+
+detector:
+  # Player ELO is fixed to this value (opponent ELO is always taken from CSV).
+  elo_self: 2050
+  # Skip first N plies, then embed only the perspective player's turns (stride=2).
+  debut_size: 20
+
+allie:
+  checkpoint_path: "../data/external/allie/best.pt"
+  hf_config_path: "../external_models/allie/pretrain_config/medium.yaml"
+  embedding_size: 1024
+  batch_size: 1024
+  n_special_tokens: 3
+  device: "cuda"

@@ -1,0 +1,24 @@
+meta:
+  dataset_id: "example"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+
+input_csv: "${meta.paths.interim_root}/02_annotated_player_moves.csv"
+output_csv: "${meta.paths.interim_root}/03_moves_allie.csv"
+
+checkpoint_path: "../data/external/allie/best.pt"
+hf_config_path: "../external_models/allie/pretrain_config/medium.yaml"
+per_gpu: 1
+
+need_columns:
+  - game_id
+  - half_move
+  - player_color
+  - opponent_elo
+  - time_control
+  - move_uci
+  - move_thinking_time
+  - fen_before
+
+elos: [1150, 1250, 1350, 1450, 1550, 1650, 1750, 1850, 1950, 2050, 2150, 2250, 2500, 2750, 3000]
+debut_size: 20

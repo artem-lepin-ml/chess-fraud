@@ -1,0 +1,28 @@
+meta:
+  dataset_id: "example"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+
+input_csv: "${meta.paths.interim_root}/02_annotated_player_moves.csv"
+output_csv: "${meta.paths.interim_root}/03_moves_maia2.csv"
+
+ratings: # elo_self arguments in inference of maia2
+  lo: 1050
+  hi: 2050
+  step: 100
+# or:
+# ratings:
+#   values: [1050, 1150, ..., 2050]
+
+columns:
+  fen_col: "fen_before"
+  move_col: "move"
+  opponent_elo_col: "opponent_elo"
+
+maia2:
+  save_root: "../data/external/maia2/maia2_blitz.pt" # from repo root
+  type: "blitz"
+  device: "gpu"
+  batch_size: 1024
+  num_workers: 32
+  verbose: true

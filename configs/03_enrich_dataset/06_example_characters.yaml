@@ -1,0 +1,20 @@
+meta:
+  dataset_id: "example"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+
+input_csv: "${meta.paths.interim_root}/02_annotated_player_moves.csv"
+output_csv: "${meta.paths.interim_root}/03_moves_characters.csv"
+
+fen_col: "fen_before"
+
+lc0_path: "../data/external/engines/lc0_v32"
+backend_args: ["--backend=cuda-fp16"]
+threads: 1  # 1 is optimal
+
+weights_dir: "../data/external/maia1_characters_weights_strong"
+weights_glob: "*.pb.gz"   # e.g. player_name.pb.gz -> name=player_name
+
+limit:
+  nodes: 1
+  time_sec: 0.00000001

@@ -1,0 +1,25 @@
+meta:
+  dataset_id: "13bins_small"
+  paths:
+    interim_root: "../data/interim/${meta.dataset_id}"
+    processed_root: "../data/processed/${meta.dataset_id}"
+
+input_csv: "${meta.paths.processed_root}/03_enriched_player_moves_full.csv"
+
+output_csv: "${meta.paths.processed_root}/04_dataset_with_stockfish_15_full.csv"
+
+columns:
+  fen_prefix: "fen_"
+  player_color_col: "player_color"
+  half_move_col: "half_move"
+
+batching:
+  max_positions_per_batch: 20000   # number of FEN evaluations per Stockfish call
+
+stockfish:
+  engine_path: "../data/external/engines/stockfish-ubuntu-x86-64-avx2"
+  depth: 15
+  time_limit: 100
+  multipv: 1
+  num_engines: 48
+  mate_eval: 10000
