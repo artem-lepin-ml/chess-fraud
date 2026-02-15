@@ -1,0 +1,150 @@
+# Chess Fraud Collection Classification Experiment Configuration
+# Configuration organized by meaning and experiments
+
+# ============================================================
+# GLOBAL SETTINGS
+# ============================================================
+data:
+  # Path to the main data file (ChessFraud.csv)
+  csv_path: "../data/processed/tournament/chess_fraud_dataset.csv"
+
+  # Paths to embedding files
+  maia_embeddings_path: "../data/processed/embeddings/maia2_2050/04_embs_maia2_2050_full.npz"
+  allie_embeddings_path: "../data/processed/embeddings/allie_2500/04_embs_allie_2500_full.npz"
+
+  # Output directories
+  data_output_dir: "../data/processed/tournament/indices"
+  checkpoints_dir: "checkpoints"
+  results_dir: "results"
+
+# ============================================================
+# MODEL ARCHITECTURE
+# ============================================================
+model:
+  embedding_dim: 1024
+  encoder_hidden_dim: 64
+  num_attention_heads: 1
+  num_encoder_layers: 1
+  last_layer_dim: 16
+  n_special_tokens: 3
+
+# ============================================================
+# TRAINING SETTINGS
+# ============================================================
+training:
+  batch_size: 32
+  learning_rate: 0.0001
+  n_epochs: 5
+  move_loss_coeff: 1.0
+  seed: 42
+
+# ============================================================
+# COLLECTION SETTINGS
+# ============================================================
+collections:
+  k_min: 10  # Minimum number of moves in a collection (half_moves - 20)/2
+  k_max: 50  # Maximum number of moves in a collection (half_moves - 20)/2
+  min_hmove: 21
+  max_hmove: 120
+  min_cheat_p: 0.1
+  max_cheat_p: 1.0
+
+  # Number of collections per player for train/val/test
+  train_n_collections: 70
+  test_n_collections: 50
+  optimal_n_cols: 50
+
+# ============================================================
+# DEVICE SETTINGS
+# ============================================================
+device:
+  gpu_id: 0
+  device: "cuda:0"
+
+# ============================================================
+# CHEAT ENGINE COLUMNS
+# ============================================================
+cheat_columns:
+  # For Allie-based experiments (move-based embeddings)
+  allie:
+    - move_maia1_1900
+    - move_lc0_1
+    - move_lc0_100
+    - move_maia2_2050
+    - move_stockfish_1
+    - move_stockfish_15
+    - move_allie_2500
+
+  # For Maia2-based experiments (fen-based embeddings)
+  maia2:
+    - fen_maia1_1900
+    - fen_lc0_1
+    - fen_lc0_100
+    - fen_maia2_2050
+    - fen_stockfish_1
+    - fen_stockfish_15
+    - fen_allie_2500
+
+# ============================================================
+# ELO BINS
+# ============================================================
+elo:
+  bounds: [1200, 1400, 1600, 1800, 2000, 2200]
+
+# ============================================================
+# EXPERIMENT CONFIGURATIONS
+# ============================================================
+experiments:
+
+  # Game Level Experiment
+  game_level_experiment:
+    # Baselines configuration
+    baselines:
+      stockfish_threshold: 0.5  # Threshold for Stockfish first-line matching
+      constant_class: 1  # Always predict cheat (class 1)
+
+    # Collection method configuration
+    collection_method:
+      # Use any p value from 0 to 1 (fixed value for this experiment)
+      p_value: 0.5
+
+    results_dir: "experiments/game_level_experiment/logs"
+
+  # P Experiment (varying proportion of cheating moves)
+  p_experiment:
+    # Range of p values to test
+    p_min: 0.1
+    p_max: 1.0
+    p_step: 0.1
+
+    # Option to train from scratch or use existing model
+    use_pretrained_model: true
+    pretrained_model_path: "checkpoints/main/last_model.pt"
+
+    results_dir: "experiments/p_experiment/logs"
+
+  # Each ELO and Cheater Experiment
+  each_elo_and_cheater_experiment:
+    # List of cheaters to test
+    cheaters:
+      allie_models:
+        - move_maia1_1900
+        - move_lc0_1
+        - move_lc0_100
+        - move_maia2_2050
+        - move_stockfish_1
+        - move_stockfish_15
+        - move_allie_2500
+      maia2_models:
+        - fen_maia1_1900
+        - fen_lc0_1
+        - fen_lc0_100
+        - fen_maia2_2050
+        - fen_stockfish_1
+        - fen_stockfish_15
+        - fen_allie_2500
+
+    # ELO bin ranges
+    elo_bin_width: 200
+
+    results_dir: "experiments/each_elo_and_cheater_experiment/logs"
