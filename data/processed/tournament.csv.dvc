@@ -1,0 +1,5 @@
+outs:
+- md5: 63d36902d84086b87ec3a6d1907c2c62
+  size: 27476987
+  hash: md5
+  path: tournament.csv
