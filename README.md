@@ -10,11 +10,35 @@ It contains:
 
 ---
 
+## Datasets & Data Availability
+
+Due to their large size, the datasets are hosted in the **[GitHub Release v1.0-data](https://github.com/artem-lepin-ml/chess-fraud/releases/tag/v1.0-data)**. 
+
+| File | Size | Description |
+| :--- | :--- | :--- |
+| `chess_fraud_synth.csv` | 1.26 GB | **ChessFraud-Synth**: 450k positions from 12k games with injected engine-assisted play. Primary training set for model development. |
+| `chess_fraud_tournament.csv` | 102 MB | **ChessFraud Benchmark**: Processed evaluation set derived from real-world tournaments. Includes move-level annotations and is ready for model testing. |
+| `tournament.csv` | 26.2 MB | **Raw Tournament Data: A collection of games "as is" from the controlled tournaments. Intended for statistical analysis and exploratory data analysis (EDA).** |
+
+### Quick Start: Setup Data
+To run the baseline code, download the datasets and place them in the expected directory:
+
+```bash
+# Create directory
+mkdir -p data/processed/
+
+# Download and move (for Linux/Mac)
+wget [https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_synth.csv](https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_synth.csv) -P data/processed/
+wget [https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_tournament.csv](https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_tournament.csv) -P data/processed/
+wget [https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/tournament.csv](https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/tournament.csv) -P data/processed/
+```
+
 ## Ethics and responsible use
 
 * **Consent & privacy:** Tournament participants provided informed consent. Released data is anonymized; raw server logs with detailed interaction traces are not published.
 * **Misuse risk:** This work may inform adversarial cheating strategies. To reduce direct misuse, we do **not** release the cheating plugin implementation or per-move hint traces that enable turnkey cheating replication.
 * **Bias/coverage:** ChessFraud contains 49 players and a single time control; participants come from a limited community. Models trained on this dataset may not generalize to other populations, formats, or platform-specific behaviors.
+
 
 ---
 
@@ -53,3 +77,4 @@ We thank the development team responsible for building and maintaining the chess
 
 * Artem Lepin: `artemlepin.ml@gmail.com`
 * Anastasiia Linich: `asya.more.collab@gmail.com`
+
