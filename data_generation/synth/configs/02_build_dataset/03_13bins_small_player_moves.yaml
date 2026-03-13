@@ -1,7 +1,7 @@
 meta:
   dataset_id: "13bins_small"
   paths:
-    interim_root: "../data/interim/${meta.dataset_id}"
+    interim_root: "../../../data/interim/${meta.dataset_id}"
 
 player_moves:
   input:

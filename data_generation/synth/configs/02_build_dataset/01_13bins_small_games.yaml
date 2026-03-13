@@ -2,8 +2,8 @@ meta:
   dataset_id: "13bins_small"
   # <1100, 1100-1200, 1200-1300, ..., 2000-2100, 2100-2200, >2200
   paths:
-    raw_root: "../data/raw/"
-    interim_root: "../data/interim/${meta.dataset_id}"
+    raw_root: "../../../data/raw/"
+    interim_root: "../../../data/interim/${meta.dataset_id}"
 
 duckdb:
   db_path: "${meta.paths.interim_root}/02/02_blitz_2025-03.duckdb"

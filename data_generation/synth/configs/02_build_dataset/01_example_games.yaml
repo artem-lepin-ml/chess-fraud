@@ -1,8 +1,8 @@
 meta:
   dataset_id: "example"
   paths:
-    raw_root: "../data/raw/"
-    interim_root: "../data/interim/${meta.dataset_id}"
+    raw_root: "../../../data/raw/"
+    interim_root: "../../../data/interim/${meta.dataset_id}"
 
 duckdb:
   db_path: "${meta.paths.interim_root}/02/duckdb/02_2025-03_first_100k_lines.duckdb"

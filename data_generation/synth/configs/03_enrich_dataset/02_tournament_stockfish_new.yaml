@@ -1,7 +1,7 @@
 meta:
   dataset_id: "tournament"
   paths:
-    interim_root: "../data/interim/${meta.dataset_id}"
+    interim_root: "../../../data/interim/${meta.dataset_id}"
 
 input_csv: "${meta.paths.interim_root}/02_pov_tournament.csv"
 output_csv: "${meta.paths.interim_root}/03_pov_tournament_with_new_oracle.csv"
@@ -10,7 +10,7 @@ columns:
   fen_col: "fen_before"
 
 stockfish:
-  engine_path: "../data/external/engines/stockfish-ubuntu-x86-64-avx512icl"
+  engine_path: "../../../data/external/engines/stockfish-ubuntu-x86-64-avx512icl"
   depths: [20]
   time_limit: 1000
   multipv: 1

@@ -1,8 +1,8 @@
 meta:
   dataset_id: "example"
   paths:
-    interim_root: "../data/interim/${meta.dataset_id}"
-    processed_root: "../data/processed/${meta.dataset_id}"
+    interim_root: "../../../data/interim/${meta.dataset_id}"
+    processed_root: "../../../data/processed/${meta.dataset_id}"
 
 input_csv: "${meta.paths.processed_root}/03_enriched_player_moves.csv"
 
@@ -31,8 +31,8 @@ detector:
   debut_size: 20
 
 allie:
-  checkpoint_path: "../data/external/allie/best.pt"
-  hf_config_path: "../external_models/allie/pretrain_config/medium.yaml"
+  checkpoint_path: "../../../data/external/allie/best.pt"
+  hf_config_path: "../../../external_models/allie/pretrain_config/medium.yaml"
   embedding_size: 1024
   batch_size: 512
   n_special_tokens: 3

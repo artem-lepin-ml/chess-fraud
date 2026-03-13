@@ -1,13 +1,13 @@
 meta:
   dataset_id: "13bins_small"
   paths:
-    interim_root: "../data/interim/${meta.dataset_id}"
+    interim_root: "../../../data/interim/${meta.dataset_id}"
 
 input_csv: "${meta.paths.interim_root}/02_annotated_player_moves.csv"
 output_csv: "${meta.paths.interim_root}/03_moves_allie.csv"
 
-checkpoint_path: "../data/external/allie/best.pt"
-hf_config_path: "../external_models/allie/pretrain_config/medium.yaml"
+checkpoint_path: "../../../data/external/allie/best.pt"
+hf_config_path: "../../../external_models/allie/pretrain_config/medium.yaml"
 per_gpu: 2
 
 need_columns:

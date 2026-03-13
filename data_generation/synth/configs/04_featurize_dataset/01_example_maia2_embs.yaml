@@ -1,8 +1,8 @@
 meta:
   dataset_id: "example"
   paths:
-    interim_root: "../data/interim/${meta.dataset_id}"
-    processed_root: "../data/processed/${meta.dataset_id}"
+    interim_root: "../../../data/interim/${meta.dataset_id}"
+    processed_root: "../../../data/processed/${meta.dataset_id}"
 
 input_csv: "${meta.paths.processed_root}/03_enriched_player_moves.csv"
 
@@ -25,7 +25,7 @@ detector:
   elo_self: 2050
 
 maia2:
-  save_root: "../data/external/maia2/maia2_blitz.pt" # from repo root
+  save_root: "../../../data/external/maia2/maia2_blitz.pt" # from repo root
   type: "blitz"
   device: "gpu"
   batch_size: 1024
