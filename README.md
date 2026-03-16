@@ -23,14 +23,19 @@ Due to their large size, the datasets are hosted in the **[GitHub Release v1.0-d
 ### Quick Start: Setup Data
 To run the baseline code, download the datasets and place them in the expected directory:
 
+## Quick Start: Setup Data
+
+To run the baseline code, download the datasets and place them in the expected directory:
+
 ```bash
 # Create directory
 mkdir -p data/processed/
 
-# Download and move (for Linux/Mac)
-wget [https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_synth.csv](https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_synth.csv) -P data/processed/
-wget [https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_tournament.csv](https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_tournament.csv) -P data/processed/
-wget [https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/tournament.csv](https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/tournament.csv) -P data/processed/
+# Download datasets (Linux/macOS)
+wget https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_synth.csv -P data/processed/
+wget https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_synth_extended.csv.zst -P data/processed/
+wget https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/chess_fraud_tournament.csv -P data/processed/
+wget https://github.com/artem-lepin-ml/chess-fraud/releases/download/v1.0-data/tournament.csv -P data/processed/
 ```
 
 ## Ethics and responsible use
