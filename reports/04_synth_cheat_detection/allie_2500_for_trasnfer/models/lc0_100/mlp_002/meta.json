@@ -1,0 +1,19 @@
+{
+  "tag": "lc0_100/mlp_002",
+  "spec": {
+    "hidden_dim": 256,
+    "act": "GELU",
+    "norm": "batch",
+    "drop": 0.0,
+    "lr": 0.0003,
+    "weight_decay": 0.0003
+  },
+  "in_dim": 1024,
+  "seed": 42,
+  "best": {
+    "best_epoch": 139,
+    "best_val_loss": 0.6704034805297852,
+    "best_thr": 0.5,
+    "val_f1_at_best_thr": 0.5788426987738118
+  }
+}
