@@ -20,9 +20,6 @@ Due to their large size, the datasets are hosted in the **[GitHub Release v1.0-d
 | `chess_fraud_tournament.csv` | 102 MB | **ChessFraud Benchmark**: Processed evaluation set derived from real-world tournaments. Includes move-level annotations and is ready for model testing. |
 | `tournament.csv` | 26.2 MB | **Raw Tournament Data**: A collection of games "as is" from the controlled tournaments. Intended for statistical analysis and exploratory data analysis (EDA). |
 
-### Quick Start: Setup Data
-To run the baseline code, download the datasets and place them in the expected directory:
-
 ## Quick Start: Setup Data
 
 To run the baseline code, download the datasets and place them in the expected directory:
