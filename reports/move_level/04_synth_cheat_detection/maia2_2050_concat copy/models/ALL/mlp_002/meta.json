@@ -1,0 +1,19 @@
+{
+  "tag": "ALL/mlp_002",
+  "spec": {
+    "hidden_dim": 256,
+    "act": "GELU",
+    "norm": "batch",
+    "drop": 0.0,
+    "lr": 0.0003,
+    "weight_decay": 0.0003
+  },
+  "in_dim": 2048,
+  "seed": 42,
+  "best": {
+    "best_epoch": 101,
+    "best_val_loss": 0.824567973613739,
+    "best_thr": 0.5,
+    "val_f1_at_best_thr": 0.5735084610913646
+  }
+}
