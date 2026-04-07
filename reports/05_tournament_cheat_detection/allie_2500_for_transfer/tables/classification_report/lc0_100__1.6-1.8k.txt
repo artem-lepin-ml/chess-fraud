@@ -1,8 +1,0 @@
-              precision    recall  f1-score   support
-
-       human       0.71      0.64      0.67      3120
-       cheat       0.44      0.51      0.47      1695
-
-    accuracy                           0.60      4815
-   macro avg       0.57      0.58      0.57      4815
-weighted avg       0.61      0.60      0.60      4815
