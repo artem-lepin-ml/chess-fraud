@@ -154,6 +154,12 @@ def compute_feature_stats(
         arr = _raw_feature_array(field_name, sub)
         mu = float(np.mean(arr))
         sigma = float(np.std(arr))
+        if not np.isfinite(mu) or not np.isfinite(sigma):
+            raise ValueError(
+                f"Non-finite stats for feature {field_name!r}: mean={mu} std={sigma}. "
+                f"Check the source column for NaN/inf or for transforms that blow up "
+                f"(e.g. log1p on values <= -1)."
+            )
         if sigma < 1e-12:
             sigma = 1.0
         stats[field_name] = {"mean": mu, "std": sigma}
