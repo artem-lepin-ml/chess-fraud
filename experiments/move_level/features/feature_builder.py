@@ -35,7 +35,6 @@ FEATURE_RAW_COLS: dict[str, list[str]] = {
     "maia2_move_prob":    ["maia2_move_prob_nearest"],
     "allie_win_prob":     ["allie_win_prob_2500"],
     "allie_move_prob":    ["allie_move_prob_nearest"],
-    "move_thinking_time": ["move_thinking_time"],
     "sf15_match":         ["move_stockfish_15"],   # + move_col (provided at build time)
     "player_elo":         ["player_elo"],
     "opponent_elo":       ["opponent_elo"],
@@ -44,7 +43,7 @@ FEATURE_RAW_COLS: dict[str, list[str]] = {
 
 # Features whose raw scalar is standardized (z-score). Binary / already-normalised
 # features stay as-is.
-FEATURE_STATS_FIELDS = {"player_elo", "opponent_elo", "move_thinking_time"}
+FEATURE_STATS_FIELDS = {"player_elo", "opponent_elo"}
 
 
 # ---------------------------------------------------------------------------
@@ -72,11 +71,6 @@ def feat_allie_move_prob(df: pd.DataFrame, move_col: str) -> np.ndarray:
     return df["allie_move_prob_nearest"].to_numpy(dtype=np.float32).reshape(-1, 1)
 
 
-def feat_move_thinking_time(df: pd.DataFrame, move_col: str) -> np.ndarray:
-    """log1p(thinking_time). Position-level."""
-    return np.log1p(df["move_thinking_time"].to_numpy(dtype=np.float32)).reshape(-1, 1)
-
-
 def feat_sf15_match(df: pd.DataFrame, move_col: str) -> np.ndarray:
     """Per-move: 1.0 iff ``df[move_col] == df["move_stockfish_15"]``."""
     return (df[move_col].to_numpy() == df["move_stockfish_15"].to_numpy()).astype(np.float32).reshape(-1, 1)
@@ -100,7 +94,6 @@ FEATURE_REGISTRY: OrderedDict[str, tuple[Callable[[pd.DataFrame, str], np.ndarra
     ("maia2_move_prob",    (feat_maia2_move_prob, 1)),
     ("allie_win_prob",     (feat_allie_win_prob, 1)),
     ("allie_move_prob",    (feat_allie_move_prob, 1)),
-    ("move_thinking_time", (feat_move_thinking_time, 1)),
     ("sf15_match",         (feat_sf15_match, 1)),
     ("player_elo",         (feat_player_elo, 1)),
     ("opponent_elo",       (feat_opponent_elo, 1)),
@@ -140,8 +133,6 @@ def _raw_feature_array(field_name: str, df: pd.DataFrame) -> np.ndarray:
         return df["player_elo"].to_numpy(dtype=np.float64)
     if field_name == "opponent_elo":
         return df["opponent_elo"].to_numpy(dtype=np.float64)
-    if field_name == "move_thinking_time":
-        return np.log1p(df["move_thinking_time"].to_numpy(dtype=np.float64))
     raise ValueError(f"No stats fitter for feature {field_name}")
 
 

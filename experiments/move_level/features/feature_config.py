@@ -18,7 +18,6 @@ class FeatureConfig:
     maia2_move_prob: bool = False      # maia2_move_prob_nearest
     allie_win_prob: bool = False       # allie_win_prob_2500
     allie_move_prob: bool = False      # allie_move_prob_nearest
-    move_thinking_time: bool = False   # log1p(move_thinking_time)
 
     # --- per-move / tabular ---
     sf15_match: bool = False           # (move == move_stockfish_15)
@@ -26,4 +25,4 @@ class FeatureConfig:
     opponent_elo: bool = False         # opponent Elo (optionally z-scored)
 
     # --- global switch ---
-    standardize: bool = True           # z-score for elo/thinking_time features
+    standardize: bool = True           # z-score for Elo features
