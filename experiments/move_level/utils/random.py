@@ -7,6 +7,9 @@ import torch
 
 def set_all_seeds(seed: int) -> None:
     os.environ["PYTHONHASHSEED"] = str(seed)
+    # Required for deterministic cuBLAS ops under torch.use_deterministic_algorithms.
+    # Must be set before the first CUDA/cuBLAS call in the process.
+    os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 
     random.seed(seed)
     np.random.seed(seed)
@@ -19,6 +22,7 @@ def set_all_seeds(seed: int) -> None:
     torch.backends.cudnn.benchmark = False
 
     try:
-        torch.use_deterministic_algorithms(True)
+        # warn_only=True so ops without deterministic impl warn rather than raise.
+        torch.use_deterministic_algorithms(True, warn_only=True)
     except Exception:
         pass
