@@ -12,6 +12,7 @@ from torch.utils.data import Dataset
 from ..configs.dataset_config import DatasetConfig
 from ..features.feature_config import FeatureConfig
 from ..features.feature_builder import build_features, feature_dim
+from ..utils.paths import open_embedding_source
 
 
 # ---------------------------------------------------------------------------
@@ -89,8 +90,8 @@ def load_tournament_data(
     csv_path = Path(cfg.tournament_csv_path)
     df = pd.read_csv(csv_path)
 
-    # ---- NPZ alignment ----
-    npz = np.load(str(cfg.tournament_emb_npz_path))
+    # ---- embedding source (directory of .npy OR a single .npz) ----
+    npz = open_embedding_source(cfg.tournament_emb_npz_path)
     emb_key = cfg.emb_key_human  # same key convention
 
     if "Unnamed: 0" in df.columns:

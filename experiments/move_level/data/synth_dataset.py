@@ -12,6 +12,7 @@ from torch.utils.data import Dataset, DataLoader
 from ..configs.dataset_config import DatasetConfig
 from ..features.feature_config import FeatureConfig
 from ..features.feature_builder import build_features, compute_feature_stats, feature_dim
+from ..utils.paths import open_embedding_source
 
 
 # ---------------------------------------------------------------------------
@@ -214,8 +215,8 @@ def load_synth_data(
     df_f = df.loc[df["is_used"] == True].reset_index(drop=True)  # noqa: E712
     npz_rows = df["npz_row"].loc[df["is_used"] == True].to_numpy(dtype=np.int64)  # noqa: E712
 
-    # ---- load NPZ ----
-    npz = np.load(str(cfg.synth_emb_npz_path))
+    # ---- load embedding source (directory of .npy OR a single .npz) ----
+    npz = open_embedding_source(cfg.synth_emb_npz_path)
 
     emb_human = np.asarray(npz[cfg.emb_key_human])[npz_rows].astype(np.float32)
     move_human = df_f[cfg.emb_key_human].to_numpy()
