@@ -81,7 +81,7 @@ def tournament_csv_path(repo_root: Path | None = None) -> Path:
 def synth_emb_allie_path(repo_root: Path | None = None) -> Path:
     """Per-column directory of Allie embeddings for synth (one ``.npy`` per move column)."""
     root = repo_root or get_repo_root()
-    return root / "data/processed/synth/04_embs_allie_2500"
+    return root / "data/processed/synth/embs_allie_2500_small_fp16"
 
 
 def synth_emb_maia2_path(repo_root: Path | None = None) -> Path:
