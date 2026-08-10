@@ -79,8 +79,6 @@ The tree below summarizes the main components of the public repository.
 
 ```text
 .
-├── assets/
-│   └── figures/                # Publication figures used in the public documentation
 ├── data/
 │   ├── raw/example/            # Small source-data fixtures for the synthetic-data pipeline
 │   ├── interim/example/        # Example intermediate tables and transformation outputs
