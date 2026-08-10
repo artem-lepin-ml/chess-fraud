@@ -1,4 +1,4 @@
-# ChessFraud
+<h1 align="center">ChessFraud</h1>
 
 <p align="center">
   <a href="https://doi.org/10.1145/3770855.3817587"><img alt="Paper: KDD 2026" src="https://img.shields.io/badge/Paper-KDD%202026-blue"></a>
@@ -124,7 +124,9 @@ If you find this work useful, please cite our paper:
 
 Paper: <https://doi.org/10.1145/3770855.3817587>
 
-Source code in this repository is released under the **GNU General Public License v3.0**. See [LICENSE](LICENSE). Dataset licensing and source terms are documented separately in the [Hugging Face dataset card](https://huggingface.co/datasets/artemlepin/chess-fraud).
+Source code in this repository is released under the **GNU General Public License v3.0**.
+
+See [LICENSE](LICENSE). Dataset licensing and source terms are documented separately in the [Hugging Face dataset card](https://huggingface.co/datasets/artemlepin/chess-fraud).
 
 ## 🍻 Acknowledgements
 
