@@ -1,4 +1,4 @@
-# ChessFraud & ChessFraud-Synth
+# ChessFraud
 
 <p align="center">
   <a href="https://doi.org/10.1145/3770855.3817587"><img alt="Paper: KDD 2026" src="https://img.shields.io/badge/Paper-KDD%202026-blue"></a>
