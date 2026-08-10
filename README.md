@@ -11,6 +11,7 @@ It contains:
 ---
 
 ## Datasets & Data Availability
+The latest version of the dataset is available here: [https://huggingface.co/datasets/artemlepin/chess-fraud](https://huggingface.co/datasets/artemlepin/chess-fraud)
 
 Due to their large size, the datasets are hosted in the **[GitHub Release v1.0-data](https://github.com/artem-lepin-ml/chess-fraud/releases/tag/v1.0-data)**. 
 
