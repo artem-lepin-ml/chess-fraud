@@ -11,15 +11,7 @@ It contains:
 ---
 
 ## Datasets & Data Availability
-The latest version of the dataset is available here: [https://huggingface.co/datasets/artemlepin/chess-fraud](https://huggingface.co/datasets/artemlepin/chess-fraud)
-
-Due to their large size, the datasets are hosted in the **[GitHub Release v1.0-data](https://github.com/artem-lepin-ml/chess-fraud/releases/tag/v1.0-data)**. 
-
-| File | Size | Description |
-| :--- | :--- | :--- |
-| `chess_fraud_synth.csv` | 1.26 GB | **ChessFraud-Synth**: 450k positions from 12k games with injected engine-assisted play. Primary training set for model development. |
-| `chess_fraud_tournament.csv` | 102 MB | **ChessFraud Benchmark**: Processed evaluation set derived from real-world tournaments. Includes move-level annotations and is ready for model testing. |
-| `tournament.csv` | 26.2 MB | **Raw Tournament Data**: A collection of games "as is" from the controlled tournaments. Intended for statistical analysis and exploratory data analysis (EDA). |
+The dataset is available here: [https://huggingface.co/datasets/artemlepin/chess-fraud](https://huggingface.co/datasets/artemlepin/chess-fraud)
 
 ## Quick Start: Setup Data
 
