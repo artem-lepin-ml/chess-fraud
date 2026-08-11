@@ -66,12 +66,25 @@ python -m pip install datasets
 from datasets import load_dataset
 
 chess_fraud = load_dataset(
-    "artemlepin/chess-fraud", "chess_fraud", split="full"
+    "artemlepin/chess-fraud",
+    "chess_fraud",
+    split="full",
+    revision="bd2804f268bf07c306217929db9b8dda5803392b",
 )
 chess_fraud_synth_train = load_dataset(
-    "artemlepin/chess-fraud", "chess_fraud_synth", split="train"
+    "artemlepin/chess-fraud",
+    "chess_fraud_synth",
+    split="train",
+    revision="bd2804f268bf07c306217929db9b8dda5803392b",
 )
 ```
+
+## 🧪 Tutorials
+
+- **[Move-level Table 4 reproduction](experiments/move_level/tutorial_reproduce_move_level_experiments.ipynb):** train the three feed-forward detector variants on ChessFraud-Synth and transfer them unchanged to ChessFraud while loading the public Allie embedding bundle through `resolve_allie_embedding_root` and joining both datasets to the published row indexes.
+- **[Public-data baselines for Tables 4 and 5](experiments/analisys/tutorial_transfer_synth_to_tournament.ipynb):** load both Hugging Face configurations at the same immutable revision and reproduce the move-level and player-game-level heuristic baselines without local data files or embedding downloads.
+
+Install the shared runtime with `python -m pip install -r` [`requirements/tutorials.txt`](requirements/tutorials.txt). The Table 4 notebook requires an NVIDIA A100 for the full training run and prints the approximately 9.56 GB download cost before acquisition; `CHESSFRAUD_ALLIE_EMBEDDING_DIR` selects an existing validated snapshot and `CHESSFRAUD_ALLIE_CACHE_DIR` selects the Hugging Face cache. The [immutable dataset revision `bd2804f268bf07c306217929db9b8dda5803392b`](https://huggingface.co/datasets/artemlepin/chess-fraud/tree/bd2804f268bf07c306217929db9b8dda5803392b) contains the public Allie embedding bundle and explicit row-alignment indexes used by the move-level Table 4 reproduction. The baseline notebook uses seed 42 and the released depth-15 Stockfish fields and does not require an engine or model weights.
 
 ## 🗂️ Repository Structure
 
