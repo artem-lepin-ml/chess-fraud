@@ -138,19 +138,33 @@ def test_shared_tutorial_requirements_cover_both_notebooks() -> None:
     } <= declared
 
 
-def test_readme_links_immutable_public_tutorials_without_metric_duplication() -> None:
+def test_readme_tutorial_section_is_concise_and_reproducible() -> None:
     readme = README.read_text(encoding="utf-8")
 
     assert DOI in readme
-    assert "experiments/move_level/tutorial_reproduce_move_level_experiments.ipynb" in readme
-    assert "experiments/analisys/tutorial_transfer_synth_to_tournament.ipynb" in readme
-    assert "requirements/tutorials.txt" in readme
     assert FINAL_REVISION in readme
-    assert f"https://huggingface.co/datasets/artemlepin/chess-fraud/tree/{FINAL_REVISION}" in readme
-    assert "approximately 9.56 GB" in readme
-    assert "resolve_allie_embedding_root" in readme
+    assert "experiments/analisys/tutorial_transfer_synth_to_tournament.ipynb" in readme
+    assert "experiments/move_level/tutorial_reproduce_move_level_experiments.ipynb" in readme
+    assert "requirements/tutorials.txt" in readme
+    assert "## 📘 Dataset Tutorials & Reproducibility" in readme
 
-    tutorials = readme.split("## 🧪 Tutorials", maxsplit=1)[1].split("\n## ", maxsplit=1)[0]
+    tutorials = readme.split(
+        "## 📘 Dataset Tutorials & Reproducibility", maxsplit=1
+    )[1].split("\n## ", maxsplit=1)[0]
+    assert tutorials.index("**[Public-data baselines]") < tutorials.index(
+        "**[Allie embeddings]"
+    )
+    assert (
+        "The Allie notebook requires about 10 GB of storage and a CUDA GPU "
+        "with at least 16 GB of VRAM; it can be reproduced in Google Colab."
+    ) in tutorials
+    assert FINAL_REVISION not in tutorials
+    assert "resolve_allie_embedding_root" not in tutorials
+    assert "A100" not in tutorials
+    assert "seed 42" not in tutorials
+    assert "depth-15" not in tutorials
+    assert "pinned public dataset snapshot" not in tutorials
+    assert "high system RAM" not in tutorials
     assert not re.search(r"(?i)(specificity|recall|macro[- ]?f1)\s*[:=]?\s*0\.\d+", tutorials)
 
 
