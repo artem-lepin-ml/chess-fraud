@@ -23,7 +23,7 @@ OLD_BASELINE_PATH = (
 )
 REQUIREMENTS = REPO_ROOT / "requirements/tutorials.txt"
 README = REPO_ROOT / "README.md"
-HF_CARD = REPO_ROOT / "huggingface/README.md"
+HUGGINGFACE_DIR = REPO_ROOT / "huggingface"
 
 FINAL_REVISION = PUBLIC_DATASET_REVISION
 DOI = "https://doi.org/10.1145/3770855.3817587"
@@ -168,11 +168,5 @@ def test_readme_tutorial_section_is_concise_and_reproducible() -> None:
     assert not re.search(r"(?i)(specificity|recall|macro[- ]?f1)\s*[:=]?\s*0\.\d+", tutorials)
 
 
-def test_hugging_face_card_documents_the_semantic_embedding_contract() -> None:
-    card = HF_CARD.read_text(encoding="utf-8")
-
-    assert "`artifacts/allie_embeddings/`" in card
-    assert "`allie-embeddings-v1`" in card
-    assert "download_allie_embeddings" in card
-    assert "CHESSFRAUD_ALLIE_EMBEDDING_DIR" in card
-    assert "CHESSFRAUD_ALLIE_CACHE_DIR" in card
+def test_repository_does_not_ship_a_local_hugging_face_card_copy() -> None:
+    assert not HUGGINGFACE_DIR.exists()
